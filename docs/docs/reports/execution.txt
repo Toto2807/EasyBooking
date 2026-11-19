@@ -1,0 +1,188 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.2.0, pluggy-1.7.0 -- python
+cachedir: .pytest_cache
+metadata: {'Python': '3.12.10', 'Platform': 'Windows-11-10.0.26300-SP0', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'cov': '7.1.0', 'html': '4.2.0', 'metadata': '3.1.1'}}
+rootdir: <projet>\backend
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.16.0, cov-7.1.0, html-4.2.0, metadata-3.1.1
+collecting ... collected 141 items
+
+tests/integration/test_auth_api.py::test_it01_register_creates_account PASSED [  0%]
+tests/integration/test_auth_api.py::test_it02_register_duplicate_email_is_refused PASSED [  1%]
+tests/integration/test_auth_api.py::test_it03_register_duplicate_username_is_refused PASSED [  2%]
+tests/integration/test_auth_api.py::test_it04_register_invalid_payload_returns_field_errors PASSED [  2%]
+tests/integration/test_auth_api.py::test_it05_login_returns_working_token PASSED [  3%]
+tests/integration/test_auth_api.py::test_it06_login_wrong_password_is_refused PASSED [  4%]
+tests/integration/test_auth_api.py::test_it07_login_unknown_email_is_refused PASSED [  4%]
+tests/integration/test_auth_api.py::test_it08_login_is_case_insensitive_on_email PASSED [  5%]
+tests/integration/test_auth_api.py::test_it09_me_returns_current_user PASSED [  6%]
+tests/integration/test_auth_api.py::test_it10_me_without_token_is_refused PASSED [  7%]
+tests/integration/test_bookings_api.py::test_it21_create_booking PASSED  [  7%]
+tests/integration/test_bookings_api.py::test_it22_overlapping_booking_is_refused PASSED [  8%]
+tests/integration/test_bookings_api.py::test_it23_back_to_back_bookings_are_allowed PASSED [  9%]
+tests/integration/test_bookings_api.py::test_it24_unknown_room_returns_404 PASSED [  9%]
+tests/integration/test_bookings_api.py::test_it25_inactive_room_cannot_be_booked PASSED [ 10%]
+tests/integration/test_bookings_api.py::test_it26_past_or_invalid_slot_is_refused PASSED [ 11%]
+tests/integration/test_bookings_api.py::test_it27_my_bookings_lists_only_my_bookings_newest_first PASSED [ 12%]
+tests/integration/test_bookings_api.py::test_it28_cancel_booking_frees_the_slot PASSED [ 12%]
+tests/integration/test_bookings_api.py::test_it29_cannot_cancel_someone_elses_booking PASSED [ 13%]
+tests/integration/test_bookings_api.py::test_it30_cancel_twice_is_refused PASSED [ 14%]
+tests/integration/test_bookings_api.py::test_it31_cannot_cancel_a_booking_already_started PASSED [ 14%]
+tests/integration/test_bookings_api.py::test_it32_cancel_unknown_booking_returns_404 PASSED [ 15%]
+tests/integration/test_e2e_scenario.py::test_it33_full_user_journey PASSED [ 16%]
+tests/integration/test_health_api.py::test_it35_health_reports_database_state PASSED [ 17%]
+tests/integration/test_rooms_api.py::test_it11_list_rooms_returns_seeded_rooms PASSED [ 17%]
+tests/integration/test_rooms_api.py::test_it12_filter_by_min_capacity PASSED [ 18%]
+tests/integration/test_rooms_api.py::test_it13_filter_by_amenity_is_case_insensitive PASSED [ 19%]
+tests/integration/test_rooms_api.py::test_it14_combined_filters PASSED   [ 19%]
+tests/integration/test_rooms_api.py::test_it15_inactive_room_is_not_available PASSED [ 20%]
+tests/integration/test_rooms_api.py::test_it16_availability_reflects_bookings_for_a_slot PASSED [ 21%]
+tests/integration/test_rooms_api.py::test_it17_amenities_endpoint_lists_unique_sorted_values PASSED [ 21%]
+tests/integration/test_rooms_api.py::test_it18_room_availability_endpoint_returns_busy_slots PASSED [ 22%]
+tests/integration/test_rooms_api.py::test_it19_unknown_room_returns_404 PASSED [ 23%]
+tests/integration/test_rooms_api.py::test_it20_slot_filter_requires_both_bounds PASSED [ 24%]
+tests/integration/test_rooms_api.py::test_it34_get_single_room PASSED    [ 24%]
+tests/performance/test_performance.py::test_pt01_health_endpoint_latency PASSED [ 25%]
+tests/performance/test_performance.py::test_pt02_login_latency PASSED    [ 26%]
+tests/performance/test_performance.py::test_pt03_list_200_rooms_latency PASSED [ 26%]
+tests/performance/test_performance.py::test_pt04_filtered_search_with_bookings_latency PASSED [ 27%]
+tests/performance/test_performance.py::test_pt05_create_50_bookings_sequentially PASSED [ 28%]
+tests/performance/test_performance.py::test_pt06_list_500_bookings_latency PASSED [ 29%]
+tests/performance/test_performance.py::test_pt07_room_availability_latency PASSED [ 29%]
+tests/performance/test_performance.py::test_pt08_register_30_users_sequentially PASSED [ 30%]
+tests/performance/test_performance.py::test_pt09_throughput_under_20_concurrent_users PASSED [ 31%]
+tests/performance/test_performance.py::test_pt10_concurrent_bookings_of_same_slot_never_double_book PASSED [ 31%]
+tests/performance/test_performance.py::test_pt11_concurrent_bookings_of_different_slots_all_succeed PASSED [ 32%]
+tests/performance/test_performance.py::test_pt12_mixed_workload_has_no_server_error PASSED [ 33%]
+tests/security/test_security.py::test_st01_password_is_stored_hashed PASSED [ 34%]
+tests/security/test_security.py::test_st02_no_secret_is_ever_returned PASSED [ 34%]
+tests/security/test_security.py::test_st03_jwt_payload_has_no_personal_data PASSED [ 35%]
+tests/security/test_security.py::test_st04_protected_routes_require_a_token[GET-/api/auth/me] PASSED [ 36%]
+tests/security/test_security.py::test_st04_protected_routes_require_a_token[GET-/api/rooms] PASSED [ 36%]
+tests/security/test_security.py::test_st04_protected_routes_require_a_token[GET-/api/rooms/amenities] PASSED [ 37%]
+tests/security/test_security.py::test_st04_protected_routes_require_a_token[GET-/api/rooms/1] PASSED [ 38%]
+tests/security/test_security.py::test_st04_protected_routes_require_a_token[GET-/api/rooms/1/availability?date=2030-01-01] PASSED [ 39%]
+tests/security/test_security.py::test_st04_protected_routes_require_a_token[GET-/api/bookings] PASSED [ 39%]
+tests/security/test_security.py::test_st04_protected_routes_require_a_token[POST-/api/bookings] PASSED [ 40%]
+tests/security/test_security.py::test_st04_protected_routes_require_a_token[DELETE-/api/bookings/1] PASSED [ 41%]
+tests/security/test_security.py::test_st05_malformed_credentials_are_refused[Bearer n.importe.quoi] PASSED [ 41%]
+tests/security/test_security.py::test_st05_malformed_credentials_are_refused[Bearer ] PASSED [ 42%]
+tests/security/test_security.py::test_st05_malformed_credentials_are_refused[Bearer] PASSED [ 43%]
+tests/security/test_security.py::test_st05_malformed_credentials_are_refused[Basic YWxpY2U6cGFzcw==] PASSED [ 43%]
+tests/security/test_security.py::test_st05_malformed_credentials_are_refused[bearer-sans-espace] PASSED [ 44%]
+tests/security/test_security.py::test_st05_malformed_credentials_are_refused[Bearer a.b.c.d] PASSED [ 45%]
+tests/security/test_security.py::test_st06_expired_token_is_refused PASSED [ 46%]
+tests/security/test_security.py::test_st07_token_signed_with_wrong_key_is_refused PASSED [ 46%]
+tests/security/test_security.py::test_st08_unsigned_alg_none_token_is_refused PASSED [ 47%]
+tests/security/test_security.py::test_st09_token_of_unknown_user_is_refused PASSED [ 48%]
+tests/security/test_security.py::test_st10_tampered_token_payload_is_refused PASSED [ 48%]
+tests/security/test_security.py::test_st11_login_does_not_reveal_whether_email_exists PASSED [ 49%]
+tests/security/test_security.py::test_st12_sql_injection_in_login_fails_and_data_is_intact[' OR '1'='1] PASSED [ 50%]
+tests/security/test_security.py::test_st12_sql_injection_in_login_fails_and_data_is_intact[admin'--] PASSED [ 51%]
+tests/security/test_security.py::test_st12_sql_injection_in_login_fails_and_data_is_intact['; DROP TABLE users; --] PASSED [ 51%]
+tests/security/test_security.py::test_st12_sql_injection_in_login_fails_and_data_is_intact[" OR ""="] PASSED [ 52%]
+tests/security/test_security.py::test_st13_sql_injection_in_registration_is_rejected PASSED [ 53%]
+tests/security/test_security.py::test_st14_sql_injection_in_room_filters_is_harmless PASSED [ 53%]
+tests/security/test_security.py::test_st15_xss_payload_in_username_is_rejected[<script>alert(1)</script>] PASSED [ 54%]
+tests/security/test_security.py::test_st15_xss_payload_in_username_is_rejected[<img src=x onerror=alert(1)>] PASSED [ 55%]
+tests/security/test_security.py::test_st15_xss_payload_in_username_is_rejected["><svg/onload=alert(1)>] PASSED [ 56%]
+tests/security/test_security.py::test_st16_user_cannot_cancel_another_users_booking PASSED [ 56%]
+tests/security/test_security.py::test_st17_user_cannot_see_another_users_bookings PASSED [ 57%]
+tests/security/test_security.py::test_st18_extra_fields_cannot_escalate_or_impersonate PASSED [ 58%]
+tests/security/test_security.py::test_st19_weak_passwords_are_rejected[password] PASSED [ 58%]
+tests/security/test_security.py::test_st19_weak_passwords_are_rejected[12345678] PASSED [ 59%]
+tests/security/test_security.py::test_st19_weak_passwords_are_rejected[PASSWORD1] PASSED [ 60%]
+tests/security/test_security.py::test_st19_weak_passwords_are_rejected[password1] PASSED [ 60%]
+tests/security/test_security.py::test_st19_weak_passwords_are_rejected[Password] PASSED [ 61%]
+tests/security/test_security.py::test_st19_weak_passwords_are_rejected[Ab1] PASSED [ 62%]
+tests/security/test_security.py::test_st20_oversized_passwords_return_422_not_500[83-octets-ascii] PASSED [ 63%]
+tests/security/test_security.py::test_st20_oversized_passwords_return_422_not_500[83-octets-utf8] PASSED [ 63%]
+tests/security/test_security.py::test_st20_oversized_passwords_return_422_not_500[1-Mo] PASSED [ 64%]
+tests/security/test_security.py::test_st21_validation_errors_do_not_echo_the_password PASSED [ 65%]
+tests/security/test_security.py::test_st22_cors_only_allows_configured_origins PASSED [ 65%]
+tests/security/test_security.py::test_st23_security_headers_are_present PASSED [ 66%]
+tests/security/test_security.py::test_st24_errors_do_not_leak_internal_details PASSED [ 67%]
+tests/security/test_security.py::test_st25_secret_key_is_strong_enough PASSED [ 68%]
+tests/unit/test_schemas.py::test_ut11_valid_user_is_accepted_and_email_lowercased PASSED [ 68%]
+tests/unit/test_schemas.py::test_ut12_invalid_email_is_rejected[pas-un-email] PASSED [ 69%]
+tests/unit/test_schemas.py::test_ut12_invalid_email_is_rejected[a@b] PASSED [ 70%]
+tests/unit/test_schemas.py::test_ut12_invalid_email_is_rejected[@example.com] PASSED [ 70%]
+tests/unit/test_schemas.py::test_ut12_invalid_email_is_rejected[alice@] PASSED [ 71%]
+tests/unit/test_schemas.py::test_ut12_invalid_email_is_rejected[] PASSED [ 72%]
+tests/unit/test_schemas.py::test_ut12_invalid_email_is_rejected[a b@example.com] PASSED [ 73%]
+tests/unit/test_schemas.py::test_ut13_short_password_is_rejected PASSED  [ 73%]
+tests/unit/test_schemas.py::test_ut14_password_missing_character_class_is_rejected[sans-majuscule] PASSED [ 74%]
+tests/unit/test_schemas.py::test_ut14_password_missing_character_class_is_rejected[sans-minuscule] PASSED [ 75%]
+tests/unit/test_schemas.py::test_ut14_password_missing_character_class_is_rejected[sans-chiffre] PASSED [ 75%]
+tests/unit/test_schemas.py::test_ut15_invalid_username_is_rejected[ab] PASSED [ 76%]
+tests/unit/test_schemas.py::test_ut15_invalid_username_is_rejected[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] PASSED [ 77%]
+tests/unit/test_schemas.py::test_ut15_invalid_username_is_rejected[al ice] PASSED [ 78%]
+tests/unit/test_schemas.py::test_ut15_invalid_username_is_rejected[alice<script>] PASSED [ 78%]
+tests/unit/test_schemas.py::test_ut15_invalid_username_is_rejected[al;ice] PASSED [ 79%]
+tests/unit/test_schemas.py::test_ut15_invalid_username_is_rejected[\xe9] PASSED [ 80%]
+tests/unit/test_schemas.py::test_ut16_unknown_fields_are_ignored PASSED  [ 80%]
+tests/unit/test_schemas.py::test_ut17_valid_booking_is_accepted_and_seconds_dropped PASSED [ 81%]
+tests/unit/test_schemas.py::test_ut18_end_not_after_start_is_rejected[fin-egale-debut] PASSED [ 82%]
+tests/unit/test_schemas.py::test_ut18_end_not_after_start_is_rejected[fin-avant-debut] PASSED [ 82%]
+tests/unit/test_schemas.py::test_ut19_booking_longer_than_max_duration_is_rejected PASSED [ 83%]
+tests/unit/test_schemas.py::test_ut20_booking_in_the_past_is_rejected PASSED [ 84%]
+tests/unit/test_schemas.py::test_ut21_timezone_aware_datetime_is_rejected PASSED [ 85%]
+tests/unit/test_schemas.py::test_ut22_invalid_room_id_is_rejected PASSED [ 85%]
+tests/unit/test_security_utils.py::test_ut01_hash_password_is_not_plaintext PASSED [ 86%]
+tests/unit/test_security_utils.py::test_ut02_verify_password_accepts_correct_password PASSED [ 87%]
+tests/unit/test_security_utils.py::test_ut03_verify_password_rejects_wrong_password PASSED [ 87%]
+tests/unit/test_security_utils.py::test_ut04_hash_is_salted PASSED       [ 88%]
+tests/unit/test_security_utils.py::test_ut05_verify_password_with_malformed_hash_returns_false[] PASSED [ 89%]
+tests/unit/test_security_utils.py::test_ut05_verify_password_with_malformed_hash_returns_false[pas-un-hash] PASSED [ 90%]
+tests/unit/test_security_utils.py::test_ut05_verify_password_with_malformed_hash_returns_false[$2b$04$tropcourt] PASSED [ 90%]
+tests/unit/test_security_utils.py::test_ut06_access_token_contains_subject_and_expiry PASSED [ 91%]
+tests/unit/test_security_utils.py::test_ut07_expired_token_is_rejected PASSED [ 92%]
+tests/unit/test_security_utils.py::test_ut08_tampered_token_is_rejected PASSED [ 92%]
+tests/unit/test_security_utils.py::test_ut09_token_signed_with_another_key_is_rejected PASSED [ 93%]
+tests/unit/test_security_utils.py::test_ut10_token_without_expiry_is_rejected PASSED [ 94%]
+tests/unit/test_services.py::test_ut23_overlapping_intervals_are_detected[chevauche-debut] PASSED [ 95%]
+tests/unit/test_services.py::test_ut23_overlapping_intervals_are_detected[chevauche-fin] PASSED [ 95%]
+tests/unit/test_services.py::test_ut23_overlapping_intervals_are_detected[contenu] PASSED [ 96%]
+tests/unit/test_services.py::test_ut23_overlapping_intervals_are_detected[englobant] PASSED [ 97%]
+tests/unit/test_services.py::test_ut23_overlapping_intervals_are_detected[identique] PASSED [ 97%]
+tests/unit/test_services.py::test_ut24_back_to_back_intervals_do_not_overlap PASSED [ 98%]
+tests/unit/test_services.py::test_ut25_disjoint_intervals_do_not_overlap PASSED [ 99%]
+tests/unit/test_services.py::test_ut26_overlap_is_symmetric PASSED       [100%]
+
+- generated xml file: <projet>\docs\reports\junit.xml -
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.10-final-0 _______________
+
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+app\__init__.py               0      0   100%
+app\config.py                10      0   100%
+app\database.py              12      0   100%
+app\deps.py                  21      0   100%
+app\main.py                  45      0   100%
+app\models.py                39      0   100%
+app\routers\__init__.py       0      0   100%
+app\routers\auth.py          35      3    91%   31-33
+app\routers\bookings.py      41      0   100%
+app\routers\rooms.py         60      0   100%
+app\schemas.py               94      0   100%
+app\security.py              22      0   100%
+app\seed.py                  10      0   100%
+app\services.py              12      0   100%
+-------------------------------------------------------
+TOTAL                       401      3    99%
+Coverage XML written to file <projet>\docs\reports\coverage.xml
+============================ slowest 10 durations =============================
+3.34s call     tests/performance/test_performance.py::test_pt09_throughput_under_20_concurrent_users
+3.29s call     tests/performance/test_performance.py::test_pt12_mixed_workload_has_no_server_error
+2.21s call     tests/performance/test_performance.py::test_pt11_concurrent_bookings_of_different_slots_all_succeed
+2.12s call     tests/performance/test_performance.py::test_pt10_concurrent_bookings_of_same_slot_never_double_book
+0.93s call     tests/performance/test_performance.py::test_pt05_create_50_bookings_sequentially
+0.80s call     tests/performance/test_performance.py::test_pt04_filtered_search_with_bookings_latency
+0.80s call     tests/performance/test_performance.py::test_pt06_list_500_bookings_latency
+0.62s call     tests/performance/test_performance.py::test_pt03_list_200_rooms_latency
+0.46s call     tests/performance/test_performance.py::test_pt08_register_30_users_sequentially
+0.44s setup    tests/performance/test_performance.py::test_pt01_health_endpoint_latency
+- Generated html report: <projet>/docs/reports/report.html -
+============================ 141 passed in 27.54s =============================
