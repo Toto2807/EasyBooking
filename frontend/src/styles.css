@@ -89,6 +89,7 @@ label.check input { width: auto; }
 
 .hint { color: var(--muted); font-size: 0.9rem; font-weight: 400; }
 .field-error { color: var(--ko); font-weight: 500; }
+.field-error-list { margin: 0; padding-left: 18px; font-size: 0.85rem; }
 small.hint { color: var(--muted); font-weight: 400; }
 
 .alert { padding: 10px 14px; border-radius: 8px; margin: 0 0 16px; }

@@ -20,15 +20,24 @@ export const STATUS_LABELS = { confirmed: 'Confirmée', cancelled: 'Annulée' };
 // Mêmes règles que le backend (voir app/schemas.py)
 export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Retourne TOUTES les règles du mot de passe non respectées (tableau vide si OK),
+// pour les afficher ensemble plutôt qu'une par une.
+export function passwordErrors(password) {
+  const errors = [];
+  if (password.length < 8) errors.push('Au moins 8 caractères');
+  if (!/[a-z]/.test(password)) errors.push('Ajoutez au moins une minuscule');
+  if (!/[A-Z]/.test(password)) errors.push('Ajoutez au moins une majuscule');
+  if (!/\d/.test(password)) errors.push('Ajoutez au moins un chiffre');
+  return errors;
+}
+
 export function validateRegistration({ username, email, password }) {
   const errors = {};
   if (!/^[A-Za-z0-9_.-]{3,30}$/.test(username)) {
     errors.username = "3 à 30 caractères : lettres, chiffres, '.', '_' ou '-'";
   }
   if (!EMAIL_RE.test(email)) errors.email = "L'adresse e-mail n'est pas valide";
-  if (password.length < 8) errors.password = 'Au moins 8 caractères';
-  else if (!/[a-z]/.test(password)) errors.password = 'Ajoutez au moins une minuscule';
-  else if (!/[A-Z]/.test(password)) errors.password = 'Ajoutez au moins une majuscule';
-  else if (!/\d/.test(password)) errors.password = 'Ajoutez au moins un chiffre';
+  const pwd = passwordErrors(password);
+  if (pwd.length > 0) errors.password = pwd; // tableau : une entrée par règle manquée
   return errors;
 }

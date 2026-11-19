@@ -46,7 +46,11 @@ export default function RegisterPage({ onRegistered }) {
         Mot de passe
         <input type="password" value={form.password} onChange={update('password')} autoComplete="new-password" />
         {errors.password ? (
-          <small className="field-error">{errors.password}</small>
+          <ul className="field-error-list">
+            {errors.password.map((message) => (
+              <li key={message} className="field-error">{message}</li>
+            ))}
+          </ul>
         ) : (
           <small className="hint">8 caractères minimum, avec une majuscule, une minuscule et un chiffre</small>
         )}
