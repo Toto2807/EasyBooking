@@ -1,0 +1,125 @@
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #1c2333;
+  --muted: #667085;
+  --primary: #2f5bea;
+  --primary-dark: #2448c0;
+  --ok: #157f4b;
+  --ok-bg: #e3f6ec;
+  --ko: #b42318;
+  --ko-bg: #fde8e6;
+  --border: #dfe3ec;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.45;
+}
+
+h1 { margin: 0 0 16px; font-size: 1.6rem; }
+h2 { margin: 0 0 8px; font-size: 1.1rem; }
+
+/* ---- Barre de navigation ---- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.brand { font-weight: 700; font-size: 1.2rem; color: var(--primary); }
+.topbar nav { display: flex; align-items: center; gap: 8px; }
+.topbar nav button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.who { color: var(--muted); margin: 0 4px 0 12px; }
+
+.container { max-width: 1000px; margin: 0 auto; padding: 24px 16px 48px; }
+
+/* ---- Composants ---- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+button {
+  font: inherit;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+}
+button:hover:not(:disabled) { border-color: var(--primary); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+button.primary:hover:not(:disabled) { background: var(--primary-dark); }
+button.link { border: none; background: none; color: var(--primary); }
+
+input, select {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 100%;
+  background: #fff;
+}
+
+label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 0.9rem; }
+label.check { flex-direction: row; align-items: center; font-weight: 500; }
+label.check input { width: auto; }
+
+.form { display: flex; flex-direction: column; gap: 14px; }
+.card.form { max-width: 420px; margin: 40px auto; }
+.row { display: flex; gap: 12px; }
+.row > * { flex: 1; }
+.actions { display: flex; justify-content: flex-end; gap: 8px; }
+
+.hint { color: var(--muted); font-size: 0.9rem; font-weight: 400; }
+.field-error { color: var(--ko); font-weight: 500; }
+small.hint { color: var(--muted); font-weight: 400; }
+
+.alert { padding: 10px 14px; border-radius: 8px; margin: 0 0 16px; }
+.alert.success { background: var(--ok-bg); color: var(--ok); }
+.alert.error { background: var(--ko-bg); color: var(--ko); }
+
+.badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
+.badge.ok { background: var(--ok-bg); color: var(--ok); }
+.badge.ko { background: var(--ko-bg); color: var(--ko); }
+
+/* ---- Chambres ---- */
+.filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; align-items: end; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.room { display: flex; flex-direction: column; margin: 0; }
+.room.unavailable { opacity: 0.75; }
+.room .meta { color: var(--muted); margin: 0 0 8px; }
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0 0 12px; }
+.tags li { background: var(--bg); border-radius: 6px; padding: 2px 8px; font-size: 0.8rem; }
+.room-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+
+/* ---- Modale ---- */
+.overlay { position: fixed; inset: 0; background: rgba(16, 24, 40, 0.5); display: grid; place-items: center; padding: 16px; z-index: 10; }
+.modal { width: 100%; max-width: 440px; margin: 0; }
+.summary { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+
+/* ---- Tableau ---- */
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-size: 0.85rem; }
+
+@media (max-width: 640px) {
+  .topbar { flex-direction: column; gap: 8px; }
+  .row { flex-direction: column; }
+}
