@@ -28,6 +28,7 @@ export function passwordErrors(password) {
   if (!/[a-z]/.test(password)) errors.push('Ajoutez au moins une minuscule');
   if (!/[A-Z]/.test(password)) errors.push('Ajoutez au moins une majuscule');
   if (!/\d/.test(password)) errors.push('Ajoutez au moins un chiffre');
+  if (!/[^A-Za-z0-9]/.test(password)) errors.push('Ajoutez au moins un caractère spécial');
   return errors;
 }
 

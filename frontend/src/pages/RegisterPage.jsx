@@ -52,7 +52,7 @@ export default function RegisterPage({ onRegistered }) {
             ))}
           </ul>
         ) : (
-          <small className="hint">8 caractères minimum, avec une majuscule, une minuscule et un chiffre</small>
+          <small className="hint">8 caractères minimum, avec une majuscule, une minuscule, un chiffre et un caractère spécial</small>
         )}
       </label>
       <button className="primary" disabled={loading}>

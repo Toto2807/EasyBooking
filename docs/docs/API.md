@@ -45,7 +45,7 @@ Corps :
 { "username": "alice", "email": "alice@example.com", "password": "Passw0rd!" }
 ```
 
-Règles : nom d'utilisateur 3 à 30 caractères (lettres, chiffres, `.`, `_`, `-`) ; e-mail valide (enregistré en minuscules) ; mot de passe 8 à 72 octets avec au moins une minuscule, une majuscule et un chiffre. Les champs inconnus sont ignorés.
+Règles : nom d'utilisateur 3 à 30 caractères (lettres, chiffres, `.`, `_`, `-`) ; e-mail valide (enregistré en minuscules) ; mot de passe 8 à 72 octets avec au moins une minuscule, une majuscule, un chiffre et un caractère spécial (tout caractère autre qu'une lettre ou un chiffre). Les champs inconnus sont ignorés.
 
 Réponses : **201** `{"id": 1, "username": "alice", "email": "alice@example.com"}` · **409** e-mail ou nom déjà utilisé · **422** données invalides.
 

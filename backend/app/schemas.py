@@ -44,6 +44,8 @@ class UserCreate(BaseModel):
             raise ValueError("Le mot de passe doit contenir au moins une majuscule")
         if not re.search(r"\d", value):
             raise ValueError("Le mot de passe doit contenir au moins un chiffre")
+        if not re.search(r"[^A-Za-z0-9]", value):
+            raise ValueError("Le mot de passe doit contenir au moins un caractère spécial")
         return value
 
 

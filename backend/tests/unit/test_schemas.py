@@ -38,11 +38,11 @@ def test_ut13_short_password_is_rejected():
 
 @pytest.mark.parametrize(
     "password",
-    ["alllowercase1", "ALLUPPERCASE1", "NoDigitsHere"],
-    ids=["sans-majuscule", "sans-minuscule", "sans-chiffre"],
+    ["alllowercase1!", "ALLUPPERCASE1!", "NoDigitsHere!", "NoSpecial123"],
+    ids=["sans-majuscule", "sans-minuscule", "sans-chiffre", "sans-caractere-special"],
 )
 def test_ut14_password_missing_character_class_is_rejected(password):
-    """Mot de passe long mais sans majuscule / sans minuscule / sans chiffre.
+    """Mot de passe long mais sans majuscule / sans minuscule / sans chiffre / sans caractère spécial.
     Attendu : ValidationError."""
     with pytest.raises(ValidationError):
         UserCreate(**{**VALID_USER, "password": password})
