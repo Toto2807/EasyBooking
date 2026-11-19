@@ -1,0 +1,60 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  backend-tests:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: easybooking
+          POSTGRES_PASSWORD: easybooking
+          POSTGRES_DB: easybooking
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd "pg_isready -U easybooking -d easybooking"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements-dev.txt
+      - run: pip install -r requirements-dev.txt
+      - name: Lancer les 4 types de tests (unitaires, intégration, sécurité, performance)
+        run: python scripts/run_all_tests.py
+        env:
+          PERF_BUDGET_FACTOR: "3" # les runners GitHub sont plus lents qu'un poste de développement
+      - name: Conserver les rapports d'exécution
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapports-de-tests
+          path: |
+            docs/reports
+            docs/FICHE_DE_TESTS.md
+
+  frontend-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install
+      - run: npm run build
+ 
